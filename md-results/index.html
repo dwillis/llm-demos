@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maryland 2024 Presidential Election Results</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Maryland 2024 Presidential Election Results</h1>
+        
+        <div class="selection-area">
+            <label for="county-select">Select a County: </label>
+            <select id="county-select">
+                <option value="statewide">Statewide Results</option>
+                <!-- Counties will be added here via JavaScript -->
+            </select>
+        </div>
+        
+        <div class="results-container">
+            <h2 id="results-title">Statewide Results</h2>
+            
+            <div class="results-grid">
+                <div class="candidate harris">
+                    <h3>Kamala Harris</h3>
+                    <p class="votes" id="harris-votes">0</p>
+                    <p class="percentage" id="harris-percentage">0%</p>
+                </div>
+                
+                <div class="candidate trump">
+                    <h3>Donald Trump</h3>
+                    <p class="votes" id="trump-votes">0</p>
+                    <p class="percentage" id="trump-percentage">0%</p>
+                </div>
+                
+                <div class="candidate other-candidates">
+                    <h3>Other Candidates</h3>
+                    <div class="other-details">
+                        <p>Oliver: <span id="oliver-votes">0</span> (<span id="oliver-percentage">0%</span>)</p>
+                        <p>Stein: <span id="stein-votes">0</span> (<span id="stein-percentage">0%</span>)</p>
+                        <p>Kennedy: <span id="kennedy-votes">0</span> (<span id="kennedy-percentage">0%</span>)</p>
+                        <p>Others: <span id="others-votes">0</span> (<span id="others-percentage">0%</span>)</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="total-votes">
+                <p>Total Votes: <span id="total-votes">0</span></p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
