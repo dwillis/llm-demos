@@ -1,4 +1,3 @@
-// script.js
 const data = `jurisdiction,harris,trump,oliver,stein,kennedy,others,total
 Allegany,9231,22141,130,136,363,136,32137
 Anne Arundel,171945,128892,2141,2429,3375,2790,311572
@@ -29,6 +28,24 @@ const parsedData = data.trim().split("\n").map(row => row.split(","));
 const headers = parsedData[0];
 const counties = parsedData.slice(1);
 
+const nameMap = {
+  harris: "Kamala Harris",
+  trump: "Donald Trump",
+  oliver: "Chase Oliver",
+  stein: "Jill Stein",
+  kennedy: "Robert Kennedy Jr.",
+  others: "Other Candidates"
+};
+
+const colorMap = {
+  harris: "dem",
+  trump: "rep",
+  oliver: "lib",
+  stein: "green",
+  kennedy: "ind",
+  others: "oth"
+};
+
 function formatPercent(val, total) {
   return ((val / total) * 100).toFixed(2) + "%";
 }
@@ -54,10 +71,12 @@ function populateTable(tableId, dataRow, total) {
   });
   table.appendChild(headerRow);
 
-  headers.slice(1, -1).forEach((name, i) => {
+  headers.slice(1, -1).forEach((key, i) => {
     const row = document.createElement("tr");
     const val = parseInt(dataRow[i + 1]);
-    row.innerHTML = `<td>${name}</td><td>${val}</td><td>${formatPercent(val, total)}</td>`;
+    const percent = formatPercent(val, total);
+    const barWidth = parseFloat(percent);
+    row.innerHTML = `<td>${nameMap[key]}</td><td>${val}</td><td>${percent} <span class='bar ${colorMap[key]}' style='width:${barWidth * 2}px'></span></td>`;
     table.appendChild(row);
   });
 }
